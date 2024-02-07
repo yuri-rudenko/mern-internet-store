@@ -29,12 +29,14 @@ const deviceSchema = new mongoose.Schema({
 
 const typeSchema = new mongoose.Schema({
     name: {type: String, required: true, unique: true},
-    devices: [{type: mongoose.Schema.Types.ObjectId, ref: 'Device'}]
+    devices: [{type: mongoose.Schema.Types.ObjectId, ref: 'Device'}],
+    brands: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Brand' }],
 });
 
 const brandSchema = new mongoose.Schema({
     name: {type: String, required: true, unique: true},
-    devices: [{type: mongoose.Schema.Types.ObjectId, ref: 'Device'}]
+    devices: [{type: mongoose.Schema.Types.ObjectId, ref: 'Device'}],
+    types: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Type' }],
 });
 
 const ratingSchema = new mongoose.Schema({
@@ -63,7 +65,7 @@ const Rating = mongoose.model('Rating', ratingSchema);
 const DeviceInfo = mongoose.model('DeviceInfo', deviceInfoSchema);
 const TypeBrand = mongoose.model('TypeBrand', typeBrandSchema);
 
-module.exports = {
+export {
     User,
     Basket,
     BasketDevice,
