@@ -1,3 +1,5 @@
+import ApiError from "../error/ApiError.js"
+
 class UserController {
 
     async registration(req, res) {
@@ -12,10 +14,13 @@ class UserController {
 
     }
 
-    async check(req, res) {
+    async check(req, res, next) {
         
         const {id} = req.query
-        console.log(query)
+        if(!id) {
+            return next(ApiError.badRequest('No ID'))
+        }
+        res.json(id)
 
     }
 };

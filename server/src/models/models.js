@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     role: {type: String, default: "USER"},
     basket: {type: mongoose.Schema.Types.ObjectId, ref: 'Basket'},
     ratings: [{type: mongoose.Schema.Types.ObjectId, ref: 'Rating'}],
-});
+}, { timestamps: true });
 
 const basketSchema = new mongoose.Schema({
     
@@ -15,7 +15,7 @@ const basketSchema = new mongoose.Schema({
 const basketDeviceSchema = new mongoose.Schema({
     basket: {type: mongoose.Schema.Types.ObjectId, ref: 'Basket'},
     device: {type: mongoose.Schema.Types.ObjectId, ref: 'Device'},
-});
+}, { timestamps: true });
 
 const deviceSchema = new mongoose.Schema({
     price: {type: Number, required: true},
@@ -25,31 +25,31 @@ const deviceSchema = new mongoose.Schema({
     ratings: [{type: mongoose.Schema.Types.ObjectId, ref: 'Rating'}],
     basketDevices:[{type: mongoose.Schema.Types.ObjectId, ref: 'BasketDevice'}],
     deviceInfo: {type: mongoose.Schema.Types.ObjectId, ref: 'DeviceInfo'},
-});
+}, { timestamps: true });
 
 const typeSchema = new mongoose.Schema({
     name: {type: String, required: true, unique: true},
     devices: [{type: mongoose.Schema.Types.ObjectId, ref: 'Device'}],
     brands: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Brand' }],
-});
+}, { timestamps: true });
 
 const brandSchema = new mongoose.Schema({
     name: {type: String, required: true, unique: true},
     devices: [{type: mongoose.Schema.Types.ObjectId, ref: 'Device'}],
     types: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Type' }],
-});
+}, { timestamps: true });
 
 const ratingSchema = new mongoose.Schema({
     rate: {type: Number, required: true},
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     device: {type: mongoose.Schema.Types.ObjectId, ref: 'Device'},
-});
+}, { timestamps: true });
 
 const deviceInfoSchema = new mongoose.Schema({
     title: { type: String, required: true },
     description: { type: String, required: true },
     device: { type: mongoose.Schema.Types.ObjectId, ref: 'Device' }
-});
+}, { timestamps: true });
 
 const typeBrandSchema = new mongoose.Schema({
 

@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import { User, Basket, BasketDevice, Device, Type, Brand, Rating, TypeBrand, DeviceInfo } from './src/models/models.js';
 import router from './src/routes/index.js';
+import errorHandler from './src/middleware/ErrorHandlingMiddleware.js';
 
 dotenv.config();
 
@@ -13,6 +14,11 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use('/api', router)
+
+
+// Last middleware
+app.use(errorHandler)
+
 
 app.get('/', (req, res) => {
     res.status(200).json({message: "SUCCES"})
