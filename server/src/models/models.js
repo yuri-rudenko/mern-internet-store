@@ -24,7 +24,9 @@ const deviceSchema = new mongoose.Schema({
     img: {type: String, required: true},
     ratings: [{type: mongoose.Schema.Types.ObjectId, ref: 'Rating'}],
     basketDevices:[{type: mongoose.Schema.Types.ObjectId, ref: 'BasketDevice'}],
-    deviceInfo: {type: mongoose.Schema.Types.ObjectId, ref: 'DeviceInfo'},
+    deviceInfo: [{type: mongoose.Schema.Types.ObjectId, ref: 'DeviceInfo'}],
+    type: {type: mongoose.Schema.Types.ObjectId, ref: 'Type'},
+    brand: {type: mongoose.Schema.Types.ObjectId, ref: 'Brand'}
 }, { timestamps: true });
 
 const typeSchema = new mongoose.Schema({
