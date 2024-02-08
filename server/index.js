@@ -1,12 +1,22 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
-import { User, Basket, BasketDevice, Device, Type, Brand, Rating, TypeBrand, DeviceInfo } from './src/models/models.js'
+import cors from 'cors';
+import { User, Basket, BasketDevice, Device, Type, Brand, Rating, TypeBrand, DeviceInfo } from './src/models/models.js';
+import router from './src/routes/index.js';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+app.use(cors());
+app.use(express.json());
+app.use('/api', router)
+
+app.get('/', (req, res) => {
+    res.status(200).json({message: "SUCCES"})
+})
 
 const start = async () => {
     try {
