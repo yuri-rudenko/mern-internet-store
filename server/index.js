@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.use('/api', router)
-
+app.use(express.static('static/uploads'))
 
 // Last middleware
 app.use(errorHandler)
