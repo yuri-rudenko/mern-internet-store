@@ -5,6 +5,8 @@ import cors from 'cors';
 import { User, Basket, BasketDevice, Device, Type, Brand, Rating, TypeBrand, DeviceInfo } from './src/models/models.js';
 import router from './src/routes/index.js';
 import errorHandler from './src/middleware/ErrorHandlingMiddleware.js';
+import multer from 'multer';
+import storage from './src/storage.js';
 
 dotenv.config();
 
@@ -18,11 +20,6 @@ app.use('/api', router)
 
 // Last middleware
 app.use(errorHandler)
-
-
-app.get('/', (req, res) => {
-    res.status(200).json({message: "SUCCES"})
-})
 
 const start = async () => {
     try {

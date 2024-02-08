@@ -1,13 +1,19 @@
+import ApiError from "../error/ApiError.js"
 import { Device } from "../models/models.js"
 
 class DeviceController {
 
-    async create(req, res) {
+    async create(req, res, next) {
 
-        const {name, price, brandId, typeId, info} = req.body
-        const {img} = req.files
-        const brand = await Device.create({name})
-        return res.json(brand)
+        try {
+            const {name, price, brandId, typeId, info} = req.body
+            const device = await Device.create({name, price, brandId, typeId, info, img:req.newFileName})
+            return res.json(device)
+        } 
+        catch (error) {
+            next(ApiError.badRequest(error.message))
+        }
+
 
     }
 
