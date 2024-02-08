@@ -8,18 +8,19 @@ class DeviceController {
         try {
             let {name, price, brand, type, info} = req.body;
 
+            const device = await Device.create({name, price, brand, type, img:req.newFileName});
+
             if(info) {
                 info = JSON.parse(info);
                 info.forEach(i => {
                     DeviceInfo.create({
                         title: i.title,
                         description: i.description,
-                        device: i.device
+                        device: device.id
                     })
                 });
             }
 
-            const device = await Device.create({name, price, brand, type, img:req.newFileName});
             return res.json(device);
         } 
         catch (error) {
@@ -53,9 +54,24 @@ class DeviceController {
     }
 
     async getOne(req, res) {
-       
-         
+        const { id } = req.params;
+    
+        try {
+            const device = await Device.findById(id);
+    
+            if (!device) {
+                return next(ApiError.badRequest())
+            }
+    
+            const deviceInfo = await DeviceInfo.find({ device: id });
 
+            device.deviceInfo = deviceInfo;
+    
+            return res.json(device);
+        } catch (error) {
+            console.error("Error while fetching device:", error);
+            return res.status(500).json({ error: "Internal server error" });
+        }
     }
 
 
