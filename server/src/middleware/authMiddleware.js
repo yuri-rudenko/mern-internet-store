@@ -7,9 +7,9 @@ export default function(req, res, next) {
 
     try {
         
-        const token = req.headers.authorisation.split(' ')[1];
+        const token = req.headers.authorization.split(' ')[1];
         if(!token) {
-            res.status(401).json({message: "Not authorised"})
+            return res.status(401).json({message: "Not authorised"})
         }
 
         const decoded = jwt.verify(token, process.env.SECRET_KEY);
@@ -19,6 +19,6 @@ export default function(req, res, next) {
         next();
 
     } catch (error) {
-        res.status(401).json({message: "Not authorised"})
+        return res.status(401).json({message: "Not authorised"})
     }
 }
