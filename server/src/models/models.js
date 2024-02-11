@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 const basketSchema = new mongoose.Schema({
-    
+    userId: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
 });
 
 const basketDeviceSchema = new mongoose.Schema({
