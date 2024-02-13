@@ -5,12 +5,10 @@ import NavBar from "./components/NavBar.jsx";
 function App() {
   return (
   <div className="App">
-
     <BrowserRouter>
-      <AppRouter/>
       <NavBar/>
+      <AppRouter/>
     </BrowserRouter>
-
   </div>
   );
 }
