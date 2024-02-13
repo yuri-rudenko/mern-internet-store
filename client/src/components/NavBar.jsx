@@ -17,10 +17,10 @@ const NavBar = observer(() => {
         <div>
             <Navbar bg='dark' variant='dark'>
             <Container>
-                <NavLink style={{color:'white', margin: 'auto 10px'}} to={SHOP_ROUTE}>BuyDevvice</NavLink>
+                <NavLink style={{color:'white', margin: 'auto 10px'}} to={SHOP_ROUTE}>BuyDevice</NavLink>
                 {user.isAuth ? 
                 <Nav className='ms-auto' style={{color:'white'}}>
-                    <Button variant={"outline-light"}>Admin panel</Button>
+                    <Button variant={"outline-light"}>Admin panel</Button>  
                     <Button variant={"outline-light"} style={{margin: 'auto 10px'}}>Log off</Button>
                 </Nav>
                 :
