@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import TypeBar from '../components/TypeBar';
+import BrandBar from '../components/BrandBar';
+import DeviceList from '../components/DeviceList';
 
 const Shop = () => {
     return (
@@ -9,8 +11,9 @@ const Shop = () => {
                 <Col md={3}>
                     <TypeBar/>
                 </Col>
-                <Col md={9}>
-                    
+                <Col md={9} style={{display: 'flex', flexDirection: 'column'}}>
+                    <BrandBar/>
+                    <DeviceList/>
                 </Col>
             </Row>
         </Container>

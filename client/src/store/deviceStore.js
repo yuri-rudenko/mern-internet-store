@@ -10,18 +10,21 @@ export default class DeviceStore {
         ];
         this._brands = [
             {id: 1, name: "Apple"},
-            {id: 2, name: "Samsung"}
+            {id: 2, name: "Samsung"},
+            {id: 3, name: "Lenovo"},
+            {id: 4, name: "Xiaomi"},
         ];
         this._devices = [
             {id: 1, name: "Iphone 12 pro", price: 2500, rating: 5, img: 'https://i.citrus.world/imgcache/size_800/uploads/shop/1/6/1699267344-opt.webp'},
-            {id: 1, name: "Iphone 12 pro", price: 2500, rating: 5, img: 'https://i.citrus.world/imgcache/size_800/uploads/shop/1/6/1699267344-opt.webp'},
-            {id: 1, name: "Iphone 12 pro", price: 2500, rating: 5, img: 'https://i.citrus.world/imgcache/size_800/uploads/shop/1/6/1699267344-opt.webp'},
-            {id: 1, name: "Iphone 12 pro", price: 2500, rating: 5, img: 'https://i.citrus.world/imgcache/size_800/uploads/shop/1/6/1699267344-opt.webp'},
-            {id: 1, name: "Iphone 12 pro", price: 2500, rating: 5, img: 'https://i.citrus.world/imgcache/size_800/uploads/shop/1/6/1699267344-opt.webp'},
+            {id: 2, name: "Iphone 12 pro", price: 2500, rating: 5, img: 'https://i.citrus.world/imgcache/size_800/uploads/shop/1/6/1699267344-opt.webp'},
+            {id: 3, name: "Iphone 12 pro", price: 2500, rating: 5, img: 'https://i.citrus.world/imgcache/size_800/uploads/shop/1/6/1699267344-opt.webp'},
+            {id: 4, name: "Iphone 12 pro", price: 2500, rating: 5, img: 'https://i.citrus.world/imgcache/size_800/uploads/shop/1/6/1699267344-opt.webp'},
+            {id: 5, name: "Iphone 12 pro", price: 2500, rating: 5, img: 'https://i.citrus.world/imgcache/size_800/uploads/shop/1/6/1699267344-opt.webp'},
 
         ];
 
-        this._selectedType = {}
+        this._selectedType = {};
+        this._selectedBrand = {};
 
         makeAutoObservable(this);
     }
@@ -42,6 +45,10 @@ export default class DeviceStore {
         this._selectedType = type;
     }
 
+    setSelectedBrand(brand) {
+        this._selectedBrand = brand;
+    }
+
     get devices() {
         return this._devices;
     }
@@ -56,5 +63,9 @@ export default class DeviceStore {
 
     get selectedType() {
         return this._selectedType;
+    }
+
+    get selectedBrand() {
+        return this._selectedBrand;
     }
 }
