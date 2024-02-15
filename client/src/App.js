@@ -5,6 +5,7 @@ import { observer } from "mobx-react-lite";
 import { useContext, useEffect, useState } from "react";
 import { Context } from "./index.js";
 import { check } from "./http/userApi.js";
+import { Spinner } from "react-bootstrap";
 
 const App = observer(() => {
 
@@ -23,6 +24,10 @@ const App = observer(() => {
     .finally(() => setLoading(false))
 
   }, [])
+
+  if(loading) {
+    return <Spinner style={{position: 'absolute', top:"50%", left:"50%"}} animation="grow"/>
+  }
   
   return (
   <div className="App">
