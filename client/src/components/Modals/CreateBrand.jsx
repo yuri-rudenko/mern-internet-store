@@ -16,7 +16,7 @@ const CreateBrand = ({show, onHide}) => {
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Control placeholder={'Enter type name'}/>
+            <Form.Control placeholder={'Enter brand name'}/>
           </Form>
         </Modal.Body>
         <Modal.Footer>
