@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import {Button, Container, Form, Row} from 'react-bootstrap';
 import Card from 'react-bootstrap/esm/Card'
-import { NavLink, useLocation } from 'react-router-dom';
-import { LOGIN_ROUTE, REGISTRATION_ROUTE } from '../utils/consts';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE } from '../utils/consts';
 import { login, registration } from '../http/userApi';
 import { Context } from '..';
 
@@ -12,6 +12,7 @@ const Auth = () => {
 
     const location = useLocation();
     const isLogin = location.pathname === LOGIN_ROUTE;
+    const navigate = useNavigate()
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -27,6 +28,7 @@ const Auth = () => {
         if(data){
             user.setUser(data)
             user.setIsAuth(true)
+            navigate(SHOP_ROUTE)
         }
 
     }
