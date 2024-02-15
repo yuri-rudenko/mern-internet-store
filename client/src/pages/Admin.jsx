@@ -12,7 +12,9 @@ const Admin = () => {
 
     return (
         <Container className='d-flex flex-column'>
-            <Button onClick={() => setShowCreateType(true)} variant={"outline-dark"} className='mt-4 p-2'>
+            <h1 className='d-flex justify-content-center mt-3'>Admin panel</h1>
+            <hr/>
+            <Button onClick={() => setShowCreateType(true)} variant={"outline-dark"} className='mt-3 p-2'>
                 Add type
             </Button>
             <Button onClick={() => setShowCreateBrand(true)} variant={"outline-dark"} className='mt-4 p-2'>
