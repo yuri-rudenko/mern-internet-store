@@ -63,7 +63,7 @@ export const fetchDevices = async () => {
 
 export const fetchOneDevice = async (id) => {
     try {
-        const {data} = await $host.get('/api/device' + id);
+        const {data} = await $host.get('/api/device/' + id);
         return data
     } catch (error) {
         alert(error.response.data.message);
