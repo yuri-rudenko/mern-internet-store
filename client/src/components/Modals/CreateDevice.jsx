@@ -32,7 +32,7 @@ const CreateDevice = ({show, onHide}) => {
                 <Dropdown.Toggle>Choose type</Dropdown.Toggle>
                 <Dropdown.Menu>
                     {device.types.map(type => (
-                        <Dropdown.Item key={type.id}>{type.name}</Dropdown.Item>
+                        <Dropdown.Item key={type._id}>{type.name}</Dropdown.Item>
                     ))}
             </Dropdown.Menu>
             </Dropdown>
@@ -40,7 +40,7 @@ const CreateDevice = ({show, onHide}) => {
                     <Dropdown.Toggle>Choose brand</Dropdown.Toggle>
                     <Dropdown.Menu>
                         {device.brands.map(brand => (
-                            <Dropdown.Item key={brand.id}>{brand.name}</Dropdown.Item>
+                            <Dropdown.Item key={brand._id}>{brand.name}</Dropdown.Item>
                         ))}
                 </Dropdown.Menu>
             </Dropdown>
