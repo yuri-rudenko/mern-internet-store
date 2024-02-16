@@ -7,7 +7,7 @@ const router = new Router();
 
 const upload = multer({storage: storage})
 
-router.post('/', upload.single('image'), deviceController.create);
+router.post('/', upload.single('img'), deviceController.create);
 router.get('/', deviceController.getAll);
 router.get('/:id', deviceController.getOne);
 

@@ -18,8 +18,8 @@ const CreateDevice = observer(({show, onHide}) => {
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [file, setFile] = useState(null);
-    const [brand, setBrand] = useState(null);
-    const [type, setType] = useState(null);
+    const [brand, setBrand] = useState('');
+    const [type, setType] = useState('');
     const [info, setInfo] = useState([]);
 
     const addinfo = () => {
@@ -40,9 +40,11 @@ const CreateDevice = observer(({show, onHide}) => {
         formData.append('name', name);
         formData.append('price', `${price}`);
         formData.append('img', file);
-        formData.append('brand', device.selectedBrand.id)
-        formData.append('type', device.selectedType.id)
+        formData.append('brand', brand._id)
+        formData.append('type', brand._id)
         formData.append('info', JSON.stringify(info))
+
+        formData.forEach((val, key) => console.log(key + ' : ' + val))
 
         createDevice(formData).then(data => onHide())
     }
@@ -65,18 +67,18 @@ const CreateDevice = observer(({show, onHide}) => {
         </Modal.Header>
         <Modal.Body>
             <Dropdown className='mt-1'>
-                <Dropdown.Toggle>{device.selectedType.name || 'Choose type'}</Dropdown.Toggle>
+                <Dropdown.Toggle>{type.name || 'Choose type'}</Dropdown.Toggle>
                 <Dropdown.Menu>
                     {device.types.map(type => (
-                        <Dropdown.Item onClick={() => device.setSelectedType(type)} key={type._id}>{type.name}</Dropdown.Item>
+                        <Dropdown.Item onClick={() => setType(type)} key={type._id}>{type.name}</Dropdown.Item>
                     ))}
             </Dropdown.Menu>
             </Dropdown>
                 <Dropdown className='mt-3'>
-                    <Dropdown.Toggle>{device.selectedBrand.name || 'Choose brand'}</Dropdown.Toggle>
+                    <Dropdown.Toggle>{brand.name || 'Choose brand'}</Dropdown.Toggle>
                     <Dropdown.Menu>
                         {device.brands.map(brand => (
-                            <Dropdown.Item onClick={() => device.setSelectedBrand(brand)} key={brand._id}>{brand.name}</Dropdown.Item>
+                            <Dropdown.Item onClick={() => setBrand(brand)} key={brand._id}>{brand.name}</Dropdown.Item>
                         ))}
                 </Dropdown.Menu>
             </Dropdown>
