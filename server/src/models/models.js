@@ -18,14 +18,15 @@ const basketDeviceSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 const deviceSchema = new mongoose.Schema({
-    price: {type: Number, required: true},
-    name: {type: String, required: true, unique: true},
-    rating: {type: Number, default: 0},
-    img: {type: String, required: true},
-    ratings: [{type: mongoose.Schema.Types.ObjectId, ref: 'Rating'}],
-    basketDevices:[{type: mongoose.Schema.Types.ObjectId, ref: 'BasketDevice'}],
-    type: {type: mongoose.Schema.Types.ObjectId, ref: 'Type'},
-    brand: {type: mongoose.Schema.Types.ObjectId, ref: 'Brand'}
+    price: { type: Number, required: true },
+    name: { type: String, required: true, unique: true },
+    rating: { type: Number, default: 0 },
+    img: { type: String, required: true },
+    ratings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Rating' }],
+    basketDevices: [{ type: mongoose.Schema.Types.ObjectId, ref: 'BasketDevice' }],
+    type: { type: mongoose.Schema.Types.ObjectId, ref: 'Type' },
+    brand: { type: mongoose.Schema.Types.ObjectId, ref: 'Brand' },
+    deviceInfo: [{ type: mongoose.Schema.Types.ObjectId, ref: 'DeviceInfo' }] // Add this line
 }, { timestamps: true });
 
 const typeSchema = new mongoose.Schema({

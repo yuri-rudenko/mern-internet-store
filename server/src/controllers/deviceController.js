@@ -58,7 +58,8 @@ class DeviceController {
         const { id } = req.params;
     
         try {
-            const device = await Device.findById(id);
+            
+            const device = await Device.findById(id).populate('deviceInfo');
     
             if (!device) {
                 return next(ApiError.badRequest())
