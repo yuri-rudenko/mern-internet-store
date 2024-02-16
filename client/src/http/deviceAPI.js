@@ -46,6 +46,7 @@ export const createDevice = async (device) => {
         const {data} = await $authHost.post('/api/device', device);
         return data
     } catch (error) {
+        console.log(error)
         alert(error.response.data.message);
     }
 

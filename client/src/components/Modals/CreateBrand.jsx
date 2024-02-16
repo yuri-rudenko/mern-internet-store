@@ -1,14 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
-import { createBrand } from '../../http/deviceAPI';
+import { createBrand, fetchBrands } from '../../http/deviceAPI';
+import { Context } from '../..';
 
 const CreateBrand = ({show, onHide}) => {
 
     const [value, setValue] = useState('')
 
-    const addBrand = () => {
-        createBrand({name: value}).then(data => setValue(''))
-        onHide()
+    const {device} = useContext(Context);
+
+    const addBrand = async () => {
+        await createBrand({name: value}).then(data => setValue(''))
+        fetchBrands()
+        .then(data => {
+          device.setBrands(data)
+          onHide()
+        })
     }
 
     return (

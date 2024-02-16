@@ -6,6 +6,7 @@ class DeviceController {
     async create(req, res, next) {
 
         try {
+            
             let {name, price, brand, type, info} = req.body;
 
             const device = await Device.create({name, price, brand, type, img:req.newFileName});
