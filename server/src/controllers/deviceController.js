@@ -31,27 +31,29 @@ class DeviceController {
 
     }
 
-    async getAll(req, res) {
-       
-         let {brand, type, page, limit} = req.query;
-         page = page || 1;
-         limit = limit || 9;
-         let offset = page * limit - limit;
-         let query = {};
+    async getAll(req, res, next) {
 
-         if(brand) query.brand = brand;
-         if(type) query.type = type;
-
-         try {
-            const devices = await Device.find(query).limit(limit).skip(offset)
-
-            return res.json(devices);
-         } 
-
-         catch (error) {
+        let {brandId, typeId, page, limit} = req.query;
+        console.log(req.query)
+        page = page || 1;
+        limit = limit || 9;
+        let offset = page * limit - limit;
+        let query = {};
+    
+        if (brandId) query.brand = brandId;
+        if (typeId) query.type = typeId;
+    
+        try {
+            const count = await Device.countDocuments(query);
+            const devices = await Device.find(query).limit(limit).skip(offset);
+    
+            return res.json({
+                count,
+                devices
+            });
+        } catch (error) {
             return next(ApiError.badRequest(error.message));
-         }
-         
+        }
     }
 
     async getOne(req, res) {
