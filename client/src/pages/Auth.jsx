@@ -48,7 +48,7 @@ const Auth = () => {
                             </div>
                             :
                             <div>
-                                Already have an account? <NavLink to={LOGIN_ROUTE}> Register! </NavLink>
+                                Already have an account? <NavLink to={LOGIN_ROUTE}> Log in! </NavLink>
                             </div>}
                             <Button style={{marginLeft: '20px'}} 
                             className='align-self-end' 
